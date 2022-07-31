@@ -1,0 +1,40 @@
+button {
+    background-color: #cbd5db;
+    border: #cbd5db solid ;
+    border-radius: 1rem;
+    padding: 10px 10px 10px ;
+}
+#token{
+   border-radius: 1rem;
+   border: #cbd5db solid ;
+   margin-right: 110px;
+   padding: 10px 10px 10px ;
+}
+#date {
+    background-color:#cbd5db;
+    border-radius : 1rem;
+}
+th ,td{
+    padding : 20px 30px 10px 20px ;
+}
+.tabi {
+    background-color:#cbd5db; 
+    border:2px solid #cbd5db ;
+    border-radius: 1rem;
+}
+#create {
+    padding-left: 100px;
+}
+#inpFile , #date , #submit, .tabi{
+    margin-bottom: 10px;
+}
+#start-date,#end-date,#from,#to {
+    margin: 10px 10px 10px 10px ;
+}
+#details {
+    padding-top: 10px;
+    padding-left : 20px;
+}
+#clear {
+    margin-right: 10px;
+}
