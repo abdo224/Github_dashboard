@@ -31,8 +31,6 @@ jobs:
     - name: Docker Build Push
       working-directory: mysite
       run: |
-        docker login --username=${{ secrets.DOCKER_USERNAME}} --password=${{ secrets.DOCKER_PASSWORD }} docker.io
-        docker build -f Dockerfile -t="djawed22/repo:latest" .
-        docker push djawed22/repo:latest
+       docker logout 
      
         
