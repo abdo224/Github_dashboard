@@ -5,7 +5,7 @@ services:
        - .:/django
       ports:
        - 8000:8000
-      image: djawed22/djawed22:latest
+      image: djawed22/repo:latest
       container_name: django_container 
       command: python manage.py runserver 0.0.0.0:8000
 
