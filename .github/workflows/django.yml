@@ -37,6 +37,7 @@ jobs:
       working-directory: mysite 
       run: |
          docker build -f Dockerfile -t="djawed22/repo:latest" .
+         docker push djawed22/repo:latest
         
      
         
