@@ -49,7 +49,9 @@ jobs:
           ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} '
         
             cd /home/ec2-user/Github_dashboard/mysite
-            touch hi.txt
+            docker rmi $(docker images)
+            docker-compose pull
+            docker-compose up -d
           ' 
      
         
