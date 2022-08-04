@@ -6,14 +6,14 @@ on:
   
 
 jobs:
-  build:
+  build and deploy:
 
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 4
       matrix:
         python-version: [3.9]
-
+    # building and testing the app
     steps:
     - uses: actions/checkout@v3
     - run: sudo apt update
@@ -28,6 +28,7 @@ jobs:
     - name: Run Tests
       run: |
         python mysite/manage.py test
+     # deploying the app   
     - name: Login to DockerHub
       uses: docker/login-action@v2
       with:
