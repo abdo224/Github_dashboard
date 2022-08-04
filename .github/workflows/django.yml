@@ -38,6 +38,15 @@ jobs:
       run: |
          docker build -f Dockerfile -t="djawed22/repo:latest" .
          docker push djawed22/repo:latest
+    - name: connect and run on ec2
+      env:
+          PRIVATE_KEY: ${{ secrets.EC2_PRIVATE_KEY  }}
+          HOSTNAME : ${{ secrets.HOSTNAME  }}
+          USER_NAME : ${{ secrets.USER  }}
+            
+      run: |
+          echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
+          ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} '     
         
      
         
