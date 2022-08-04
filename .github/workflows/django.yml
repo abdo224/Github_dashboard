@@ -46,19 +46,10 @@ jobs:
             
       run: |
           echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
-          ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} 
-            DIR="/home/ec2-user/Github_dashboard/mysite"
-          
-            cd /home/ec2-user/Github_dashboard
-            
-            if [ ! -d $DIR ]
-            then
-              mkdir mysite &&
-              cd mysite
-            else
-              cd mysite
-            fi
-            touch hi.txt
+          ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} '
         
+            cd /home/ec2-user/Github_dashboard/mysite
+            touch hi.txt
+          ' 
      
         
