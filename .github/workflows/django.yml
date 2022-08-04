@@ -51,6 +51,7 @@ jobs:
             cd /home/ec2-user/Github_dashboard/mysite
             docker-compose down
             docker system prune
+            docker rmi $(docker images)
             docker pull djawed22/repo:latest
             docker pull mysql
             docker-compose up -d
