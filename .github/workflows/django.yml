@@ -48,7 +48,8 @@ jobs:
           echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
           ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} 
           DIR="/home/ec2-user/Github_dashboard/mysite"
-          docker rmi $(docker images)
+          docker-compose pull
+          docker-compose up -d
         
      
         
