@@ -106,7 +106,8 @@
                                         owner: donnes[i].owner,
                                         repo: (donnes[i].repos)[j],
                                         since: start,
-                                        until: end
+                                        until: end,
+                                        per_page: 100
                                     })
                                     repo_commits[repo_name].push(commits.data) 
                                 
