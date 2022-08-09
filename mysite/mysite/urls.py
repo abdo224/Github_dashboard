@@ -28,7 +28,8 @@ urlpatterns = [
     path('login/', auth_views.LoginView.as_view(template_name='myapp/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(template_name='myapp/logout.html'), name='logout'),
     path('register/', vs.register, name='register'),
-    path('profile/', vs.profile, name='profile'),
+    path('profileFolders/', vs.profileFolders, name='profilef'),
+    path('profileCommits', vs.profileCommits, name="profilec"),
     path('admin/', admin.site.urls),
 
 ]

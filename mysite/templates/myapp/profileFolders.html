@@ -1,0 +1,24 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block content %}
+    
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+ <div id="global">
+            <h2>welcome {{ user.username }} to Github PR</h2><br><br>
+
+            <form id="myForm">
+                <input type="file" id="inpFile" name="inpFile">
+                <pre id="fileContent"></pre>
+                
+            
+                <input type="text" id="token" placeholder="Github Token ">
+                <button type="submit" id="submit">Search And Download ..</button>
+            </form>
+            
+            <div id="folderContent">
+
+            </div>
+ </div> 
+ <script type="module" src="{% static 'js/scriptFolders.js' %}"></script>
+ {% endblock %}

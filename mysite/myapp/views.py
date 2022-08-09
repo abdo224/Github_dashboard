@@ -22,6 +22,11 @@ def register(request):
 
 
 @login_required
-def profile(request):
+def profileCommits(request):
 
-    return render(request, 'myapp/profile.html')
+    return render(request, 'myapp/profileCommits.html')
+
+
+@login_required
+def profileFolders(request):
+    return render(request, 'myapp/profileFolders.html')

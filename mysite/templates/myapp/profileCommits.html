@@ -1,0 +1,45 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block content %}
+    
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+ <div id="global">
+            <h2>welcome {{ user.username }} to Github PR</h2><br><br>
+
+            <form id="myForm">
+                <input type="file" id="inpFile" name="inpFile">
+                <pre id="fileContent"></pre>
+                
+            <div id="date"> 
+                <label for="From" id="from">From :</label>
+                <input type="date" id="start-date">
+                <label for="To" id="to"> To :</label>
+                <input type="date" id="end-date">
+            </div> <br><br>
+                <input type="text" id="token" placeholder="Github Token ">
+                <button type="submit" id="submit">Search ..</button>
+            </form><br><br>
+            <div class="tabi">
+                <table id="table">
+                    <tr>
+                        <th>Repo</th>
+                        <th id="create"> Created at </th>
+                        <th id="clear"><button id="clicki">clear all </button></th>
+                         
+                    </tr>
+                    
+                </table>
+            </div> 
+            <div class="container">
+                <canvas id="Mychart">
+
+                </canvas>
+            </div>
+ </div>  
+     
+      
+     
+<script type="module" src="{% static 'js/scriptCommits.js' %}"></script>
+{% endblock %}
+
