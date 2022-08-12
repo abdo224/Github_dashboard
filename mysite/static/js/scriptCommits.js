@@ -34,13 +34,16 @@
                      
                          var fetched_repos = []
                          var repo_commits = {}
-                         var owners = []
+                         var repo_commits_peruser = {}
+                     
                          const octokit  = new Octokit({
                              auth: token
                          })
                          
                          
                          var globaly = document.getElementById('global')
+                         var clos = document.getElementById('close')
+                         var overlay = document.getElementById('overlay')
                      
                          for(var i=0;i < donnes.length;i++){
                              // get all repos
@@ -67,24 +70,45 @@
                                      until: end,
                                      per_page: 100
                                  })
-                                 repo_commits[repo_name].push(commits.data) 
+                                 repo_commits[repo_name].push((commits.data))
+                               
+                                
+                                  
                              
                         }
                        }
-                       console.log(fetched_repos)
                        console.log(repo_commits)
-                           
-                           
-                           
-
-                         
-                         
-                        
-                         
+                      
+                       for(let key in repo_commits){    
+                            for(let i=0;i<repo_commits[key][0].length;i++){
+                                var comm = repo_commits[key][0][i]
+                                if(repo_commits_peruser[comm.commit.author.name]){
+                                    repo_commits_peruser[comm.commit.author.name]++
+                                }else {
+                                    repo_commits_peruser[comm.commit.author.name] = 1
+                                }
+                                
+                            }
+                       }
+                        console.log(repo_commits_peruser)   
+                        // show commit per user 
+                        var labels = []
+                        var dataCharts = []             
+                        for(let key in repo_commits_peruser){
+                            labels.push(key)
+                            dataCharts.push(repo_commits_peruser[key])
+                          }
+                          
+                      
+                             
                          var L = fetched_repos.length;
                          var tab = document.getElementById('table')
                           //show commits per repo
                           var canvas = document.getElementById('Mychart').getContext('2d')
+                          var ctx = document.createElement('canvas')
+                          var config = {}
+                          var charts = new Chart(ctx, config)
+                          var row2 = document.getElementById('per_user')
                          for(let i=0;i<L;i++){
                              var row = document.createElement('tr')
                              row.setAttribute('class','toClear')
@@ -96,12 +120,12 @@
                              var row_data_3 = document.createElement('td')
                              var a = document.createElement('a');
                              a.appendChild(document.createTextNode('Details'))
-                             var ctx = document.createElement('canvas')
-                             var config = {}
-                             var charts = new Chart(ctx, config)
+                             
                              a.href = '#'
-                             a.onclick = function handle(){
+                             a.onclick = function handle(e){
+                                 e.preventDefault()
                                  charts.destroy()
+                                 var model = document.getElementById('model')
                                  charts = new Chart(canvas,{
                                      type:'bar',
                                      data : {
@@ -120,6 +144,25 @@
 
                                      }
                                  })
+                                 if(model == null) return 
+                                 model.classList.add('active')
+                                 overlay.classList.add('active')
+                                 overlay.addEventListener('click', () =>{
+                                    const modals = document.querySelectorAll('.model.active')
+                                    modals.forEach(modal => {
+                                    if(modal == null) return 
+                                    modal.classList.remove('active')
+                                    overlay.classList.remove('active')
+                                    })
+                                        
+                                    });
+                                 
+                                 clos.addEventListener('click', () => {
+                                    if(model == null) return 
+                                    model.classList.remove('active')
+                                    overlay.classList.remove('active')
+                                 })
+
                                  
                              }
                              row_data_3.appendChild(a);
@@ -129,6 +172,55 @@
                              tab.appendChild(row)
                              
                          }
+                         var a2 = document.createElement('a');
+                         a2.setAttribute('id','center')
+                         a2.appendChild(document.createTextNode('Commits Per User'))
+                         a2.href = '#'
+                         a2.onclick = function handle2(e){
+                            e.preventDefault()
+                            charts.destroy()
+                                 charts = new Chart(canvas,{
+                                     type:'bar',
+                                     data : {
+                                         labels : labels,
+                                         datasets : [
+                                             {
+                                                 label : 'Commits',
+                                                 data : dataCharts,
+                                                 backgroundColor : 'rgb(55,140,255)',
+                                                 borderWidth : 1 ,
+                                                 borderColor: '#777',
+                                                 hoverBorderWidth : 3,
+                                                 hoverBorderColor : '#000'
+                                             }
+                                         ]
+
+                                     }
+                                 })
+                                 if(model == null) return 
+                                 model.classList.add('active')
+                                 overlay.classList.add('active')
+                                 overlay.addEventListener('click', () =>{
+                                    const modals = document.querySelectorAll('.model.active')
+                                    modals.forEach(modal => {
+                                    if(modal == null) return 
+                                    modal.classList.remove('active')
+                                    overlay.classList.remove('active')
+                                    })
+                                        
+                                    });
+                                 
+                                 clos.addEventListener('click', () => {
+                                    if(model == null) return 
+                                    model.classList.remove('active')
+                                    overlay.classList.remove('active')
+                                 })
+
+                         }
+                         var tab2 = document.getElementById('table2')
+                         
+                         
+                         tab2.appendChild(a2)
                          var tr = document.getElementsByClassName('toClear')
                          var cn = document.getElementById('Mychart');
                          var clear = document.getElementById('clicki')
@@ -140,8 +232,13 @@
                           charts.destroy()
                           cn.innerHTML = ''
                           filer.innerHTML = ''
+                          tab2.removeChild(a2)
+                          a2.innerHTML = ''
+                          tab2.innerHTML =''
+                          
                          })
 
-                         
+
+                       
                  })
                  

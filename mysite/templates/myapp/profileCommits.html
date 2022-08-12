@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
     
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+ <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
  <div id="global">
             <h2>welcome {{ user.username }} to Github PR</h2><br><br>
@@ -20,7 +20,9 @@
                 <input type="text" id="token" placeholder="Github Token ">
                 <button type="submit" id="submit">Search ..</button>
             </form><br><br>
+               
             <div class="tabi">
+                
                 <table id="table">
                     <tr>
                         <th>Repo</th>
@@ -30,12 +32,22 @@
                     </tr>
                     
                 </table>
-            </div> 
-            <div class="container">
+                
+            </div><br> 
+            <div id="table2">
+                  
+            </div><br>
+
+            <div class="model" id="model">
+                <div class="model-header">
+                    <div class="title"> Commits Statistics</div>
+                    <button class="close-button" id="close">x</button>
+                </div>
                 <canvas id="Mychart">
 
                 </canvas>
             </div>
+            <div id="overlay"></div>
  </div>  
      
       

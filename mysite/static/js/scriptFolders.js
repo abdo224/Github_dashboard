@@ -59,15 +59,25 @@ var data;
                     repo :donnes[i].repo,
                     path: donnes[i].path
                 })
+                console.log(repo2)
                 
                 
-                var folder_object = {
-                    repo: repo_name,
-                    folders: (repo2.data).length,
-                    path: donnes[i].path
-                }
+              
                
-                fetched_folders.push(folder_object)
+                    var folder = {
+                        repo : repo_name,
+                        folders_and_files : (repo2.data).length,
+                       
+                        path : donnes[i].path
+                    }
+                    fetched_folders.push(folder)
+                
+
+              
+                
+                
+               
+                fetched_folders.push(folder)
             }
             console.log(fetched_folders)
             var file_to_export = {}
