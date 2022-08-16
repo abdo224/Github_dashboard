@@ -38,24 +38,6 @@ jobs:
       run: |
          docker build -f Dockerfile -t="djawed22/repo:latest" .
          docker push djawed22/repo:latest
-    - name: connect and run on ec2
-      env:
-          PRIVATE_KEY: ${{ secrets.EC2_PRIVATE_KEY  }}
-          HOSTNAME : ${{ secrets.HOSTNAME  }}
-          USER_NAME : ${{ secrets.USER  }}
-            
-      run: |
-          echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
-          ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} '
-         
-            cd /home/ec2-user/Github_dashboard/mysite
-            sudo systemctl start docker
-            docker-compose down
-            docker system prune
-            docker rmi $(docker images)
-            docker pull djawed22/repo:latest
-            docker pull mysql
-            docker-compose up -d
-          ' 
+ 
      
         
