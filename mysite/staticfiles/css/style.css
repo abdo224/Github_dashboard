@@ -38,3 +38,9 @@ th ,td{
 #clear {
     margin-right: 10px;
 }
+#table {
+    table-layout: fixed;
+}
+#table2 {
+    table-layout : fixed;
+}

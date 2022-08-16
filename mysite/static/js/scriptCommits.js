@@ -1,7 +1,11 @@
-// we will put some code here later //    
+    
              import { Octokit, App } from "https://cdn.skypack.dev/octokit";
+             
             
-             var filer = document.getElementById("fileContent") ;
+             
+
+            
+             //var filer = document.getElementById("fileContent") ;
              var data;
              var start ;
              var end ;
@@ -9,7 +13,7 @@
                          const reader = new FileReader();
                          reader.onload = s => {
                          console.log(s);
-                         filer.innerHTML  = s.target.result;
+                         //filer.innerHTML  = s.target.result;
                          data = s.target.result;
                          }
                          reader.readAsText(e.target.files[0]);
@@ -18,20 +22,23 @@
                  const myForm = document.getElementById("myForm");
                  myForm.addEventListener("submit" ,async function(e) {
                          e.preventDefault();
+                    try{ 
                          let start_date = (document.getElementById("start-date").value).split('-'); 
                          let end_date = (document.getElementById("end-date").value).split('-');
                          let from_date = new Date(parseInt(start_date[0]), parseInt(start_date[1])-1, parseInt(start_date[2]), 0, 0, 0, 0).toISOString();
                          let to_date = new Date(parseInt(end_date[0]), parseInt(end_date[1])-1, parseInt(end_date[2]), 23, 59, 59, 59).toISOString();
                          start = from_date ;
                          end = to_date;
-
-                         let token = document.getElementById("token").value ; 
-
+                        
+                         
                          var data_json = JSON.parse(data)
                          var donnes = data_json.data
-                         
+
+                         let token = document.getElementById("token").value ;
                         
-                     
+                        
+                         
+
                          var fetched_repos = []
                          var repo_commits = {}
                          var repo_commits_peruser = {}
@@ -90,6 +97,9 @@
                                 
                             }
                        }
+                    
+                        
+                    
                         console.log(repo_commits_peruser)   
                         // show commit per user 
                         var labels = []
@@ -217,10 +227,17 @@
                                  })
 
                          }
-                         var tab2 = document.getElementById('table2')
-                         
-                         
-                         tab2.appendChild(a2)
+                       
+                        if(dataCharts !== []){
+                         var tab2 = document.createElement('table')
+                         tab2.setAttribute('id','table2')
+                         var tr2 = document.createElement('tr')
+                         var td2 = document.createElement('td')
+                         td2.appendChild(a2)
+                         tr2.appendChild(td2)
+                         tab2.appendChild(tr2)
+                         globaly.appendChild(tab2)
+                        }
                          var tr = document.getElementsByClassName('toClear')
                          var cn = document.getElementById('Mychart');
                          var clear = document.getElementById('clicki')
@@ -232,12 +249,18 @@
                           charts.destroy()
                           cn.innerHTML = ''
                           filer.innerHTML = ''
-                          tab2.removeChild(a2)
+                          td2.removeChild(a2)
+                          tr2.removeChild(td2)
+                          tab2.removeChild(tr2)
+                          globaly.removeChild(tab2)
                           a2.innerHTML = ''
                           tab2.innerHTML =''
                           
                          })
-
+                    }catch(e){
+                        var err = e.toString()
+                        swal('Ooops!',err,'error')
+                    } 
 
                        
                  })
