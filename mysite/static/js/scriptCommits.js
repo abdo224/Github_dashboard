@@ -258,10 +258,10 @@
                         
                           a2.innerHTML = ''
                           tab2.innerHTML = ''
-                         /* td2.removeChild(a2)
+                          td2.removeChild(a2)
                           tr2.removeChild(td2)
                           tab2.removeChild(tr2)
-                          globaly.removeChild(tab2)*/
+                          globaly.removeChild(tab2)
                        
                           
                          })
