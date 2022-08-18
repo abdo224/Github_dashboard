@@ -82,3 +82,6 @@ body {
   .account-heading {
     font-size: 2.5rem;
   }
+  #Folders {
+    margin-left: 10px;
+  }
