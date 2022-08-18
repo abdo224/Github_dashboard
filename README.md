@@ -7,4 +7,4 @@ and django python framework in the back-end
 2. clone this repo : git clone https://github.com/abdo224/Github_dashboard.git
 3. go to mysite directory and chnage the mode of the script file : sudo chmod +x script.sh 
 4. run the script file : ./script.sh 
-5. run docker ps to show the running containers 
+5. run docker ps to show all running containers 
