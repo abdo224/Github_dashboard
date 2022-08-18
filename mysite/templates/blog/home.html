@@ -2,6 +2,7 @@
 {% load static %}
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/style_home.css' %}">
+<div id="bodyHome" onload="swaly">
     {% for post in posts %}
         <article class="media content-section">
           <div class="media-body">
@@ -15,4 +16,10 @@
         </article>
     {% endfor %}
     <img src="{% static 'images/git.png'%}" alt="Git_Github" width="700" height="500">
+
+</div>  
+    <script defer src="{% static 'js/scriptHomejs' %}"></script>
+    
+   
+
 {% endblock content %}
