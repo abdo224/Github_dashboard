@@ -2,14 +2,14 @@
 import { Octokit, App } from "https://cdn.skypack.dev/octokit";
 
             
-var filer = document.getElementById("fileContent") ;
+
 var data;
 
     document.getElementById("inpFile").addEventListener("change", e => {
             const reader = new FileReader();
             reader.onload = s => {
             console.log(s);
-            filer.innerHTML  = s.target.result;
+           
             data = s.target.result;
             }
             reader.readAsText(e.target.files[0]);
