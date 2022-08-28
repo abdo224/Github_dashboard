@@ -4,4 +4,4 @@ metadata:
   name: sql-config
 data:
   sql-url: sql-service
-   
+  sql-host : mysql
