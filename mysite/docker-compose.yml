@@ -17,5 +17,6 @@ services:
       MSQL_DATABASE: 'django-app-db'
       MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
     volumes:
-     - ./mysql:/var/lib/msql  
+     - ./mysql:/var/lib/msql
+    
 
