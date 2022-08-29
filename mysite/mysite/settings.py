@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 import os
 from pathlib import Path
-import environ
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -23,8 +23,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-ad^dpeznop5!)i%6rkc5lsq)w6n24$hti+o%v*x6za(e$d57c_'
-
-env = environ.Env()
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -88,10 +86,10 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'mysql',
+        'NAME': 'django-app-db',
         'USER': 'root',
-        'PASSWORD': env.str("MYSQL_PASSWORD"),
-        'HOST': env.str("DB_HOST"),
+        'PASSWORD': '',
+        'HOST': 'db',
         'PORT': '3306',
 
     }
