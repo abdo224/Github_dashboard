@@ -14,7 +14,7 @@ services:
   db:
     image: mysql:latest
     environment:
-      MSQL_DATABASE: 'django-app-db'
+      MYSQL_DATABASE: 'django-app-db'
       MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
     volumes:
      - ./mysql:/var/lib/msql
