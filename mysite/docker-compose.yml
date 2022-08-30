@@ -17,7 +17,7 @@ services:
       MYSQL_DATABASE: 'django-app-db'
       MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
     volumes:
-     - ./mysql:/var/lib/msql
+     - ./mysql:/var/lib/mysql
     ports:
      - 3306:3306
 
